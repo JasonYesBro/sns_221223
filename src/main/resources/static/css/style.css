@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+header {
+	height: 100px;
+}
+
+#sign-up-box {
+	max-width: 450px;
+}
+
+a {
+	color: black;
+}
+
+a:hover {
+	text-decoration: none;
+	color: black;
+}
+
+#title {
+	text-shadow: 5px 4px 5px lightgray;
+}
+
+#wrap {
+	height: 1000px;
+}
