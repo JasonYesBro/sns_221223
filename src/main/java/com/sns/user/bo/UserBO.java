@@ -14,4 +14,8 @@ public class UserBO {
 	public User getUserByLoginId(String loginId) {
 		return userMapper.selectUserByLoginId(loginId);
 	}
+
+	public int insertUser(String loginId, String password, String name, String email) {
+		return userMapper.insertUser(loginId, password, name, email);
+	}
 }
