@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <div id="sign-up-box" class="container mt-2">
 	<h1 id="" class="display-4 text-secondary text-center mb-3">회원가입</h1>
-	<form action="/" method="post" class="">
+	<form action="/user/sign_up" method="post" class="" id="signUpForm">
 		<div class="form-group">
 			<div class="d-flex justify-content-between">
 				<input type="text" name="loginId" id="loginId"
@@ -15,13 +15,13 @@
 			<small id="idCheckOk" class="text-primary d-none">사용가능한 ID입니다.</small>
 		</div>
 		<div class="form-group">
-			<input type="text" name="password" id="password" class="form-control"
+			<input type="password" name="password" id="password" class="form-control"
 				placeholder="비밀번호를 입력하세요.">
 		</div>
 		<div class="form-group">
-			<input type="text" name="confirmPassword" id="confirmPassword" class="form-control"
+			<input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
 				placeholder="비밀번호를 다시 입력하세요."> 
-			<small class="text-danger d-none">비밀번호가 일치하지 않습니다.</small>
+			<small id="passwordCheck" class="text-danger d-none">비밀번호가 일치하지 않습니다.</small>
 		</div>
 		<div class="form-group">
 			<input type="text" name="name" id="name" class="form-control"
@@ -31,7 +31,7 @@
 			<input type="text" name="email" id="email" class="form-control"
 				placeholder="이메일을 입력하세요.">
 		</div>
-		<button type="button" id="signUpBtn" class="btn btn-primary form-control">회원가입</button>
+		<button type="submit" id="signUpBtn" class="btn btn-primary form-control">회원가입</button>
 	</form>
 </div>
 
@@ -70,6 +70,56 @@
 			});
 			
 			
+		});
+		
+		$('#signUpForm').on('submit', function(e) {
+			e.preventDefault();
+			
+			// 초기화
+			$('#passwordCheck').addClass("d-none");
+			// validation
+			let loginId = $('#loginId').val().trim();
+			let password = $('#password').val();
+			let confirmPassword = $('#confirmPassword').val();
+			let name = $('#name').val().trim();
+			let email = $('#email').val().trim();
+			
+			if (!loginId) {
+				alert("아이디를 확인해주세요.");
+				return false;
+			}
+			if (!password || !confirmPassword) {
+				alert("비밀번호를 확인해주세요.");
+				return false;
+			}
+			if (!(password == confirmPassword)) {
+				$('#passwordCheck').removeClass("d-none");
+				return false;
+			}
+			if (!name) {
+				alert("이름을 확인해주세요.");
+				return false;
+			}
+			if (!email) {
+				alert("이메일을 확인해주세요.");
+				return false;
+			}
+			
+			let url = $(this).attr('action');
+			let params = $(this).serialize();
+			
+			// post AJAX
+			$.post(url, params)
+			.done(function(data) {
+				
+				if (data.code == 1) {
+					alert("가입을 환영합니다.");
+					// 로그인 화면으로 이동
+					location.href = "/user/sign_in_view";
+				} else {
+					alert(data.errorMessage);
+				}
+			});
 		});
 	});
 	
