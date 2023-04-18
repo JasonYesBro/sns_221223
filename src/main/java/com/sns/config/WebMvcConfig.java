@@ -15,6 +15,6 @@ public class WebMvcConfig implements WebMvcConfigurer{
 		
 		registry
 			.addResourceHandler("/images/**") // 그 뒤에 무언가가 있다 ** 웹이미지 주소
-			.addResourceLocations("file://http://localhost:8080" + FileManagerService.FILE_UPLOAD_PATH); // mac은 // 두개임 윈도우는 /// 3개
+			.addResourceLocations("file://" + FileManagerService.FILE_UPLOAD_PATH); // mac은 // 두개임 윈도우는 /// 3개
 	}
 }
