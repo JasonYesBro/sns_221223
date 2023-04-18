@@ -4,10 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sns.common.EncryptUtils;
 import com.sns.user.bo.UserBO;
@@ -59,7 +61,8 @@ public class UserRestController {
 			@RequestParam("loginId") String loginId
 			, @RequestParam("password") String password
 			, @RequestParam("name") String name
-			, @RequestParam("email") String email) {
+			, @RequestParam("email") String email
+			, @RequestParam(value="file", required=false) MultipartFile file) {
 		
 		// TODO Map
 		Map<String, Object> result = new HashMap<>();
@@ -94,7 +97,8 @@ public class UserRestController {
 	public Map<String, Object> signIn(
 			@RequestParam("loginId") String loginId
 			, @RequestParam("password") String password
-			, HttpSession session) {
+			, HttpSession session
+			, Model model) {
 		Map<String, Object> result = new HashMap<>();
 		
 		// 비밀번호 해싱
@@ -108,6 +112,9 @@ public class UserRestController {
 		if (user != null) {
 			result.put("code", 1);
 			result.put("result", "로그인에 성공하였습니다.");
+			
+			// 프로필 이미지 가져오기
+			model.addAttribute("profileImagePath", user.getProfileImagePath());
 			
 			// 세션 저장
 			session.setAttribute("userId", user.getId());

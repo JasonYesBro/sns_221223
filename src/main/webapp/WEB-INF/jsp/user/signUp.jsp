@@ -31,6 +31,10 @@
 			<input type="text" name="email" id="email" class="form-control"
 				placeholder="이메일을 입력하세요.">
 		</div>
+		<div class="form-group">
+			<input type="file" id="file" name="file" accept=".jpg, .jpeg, .png, .gif">
+		</div>
+		
 		<button type="submit" id="signUpBtn" class="btn btn-primary form-control">회원가입</button>
 	</form>
 </div>
@@ -83,6 +87,7 @@
 			let confirmPassword = $('#confirmPassword').val();
 			let name = $('#name').val().trim();
 			let email = $('#email').val().trim();
+			let file = $('#file').val();
 			
 			if (!loginId) {
 				alert("아이디를 확인해주세요.");
@@ -103,6 +108,22 @@
 			if (!email) {
 				alert("이메일을 확인해주세요.");
 				return false;
+			}
+			if (!file) {
+				// 기본 이미지 주소 경로로 설정
+				file = "/Users/jasonmilian/Desktop/megaProject/6_spring_project/sns/workspace/images/defaultImg/defaultProfileImg.png"
+			}
+			
+			// 파일이 업로드 된 경우에만 확장자 체크
+			if (file != "") {
+				// 확장자만 뽑아서 소문자로 변경한다.
+				let ext = file.split(".").pop().toLowerCase();
+				//alert(ext);
+				if ($.inArray(ext, ['jpg', 'jpeg', 'png', 'gif']) == -1) {
+					alert("이미지 파일만 업로드 할 수 있습니다.");
+					$('#file').val(""); // 파일을 비운다.
+					return;
+				}
 			}
 			
 			let url = $(this).attr('action');

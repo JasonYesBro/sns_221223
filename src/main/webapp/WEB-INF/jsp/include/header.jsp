@@ -15,6 +15,9 @@
 				<span>userId</span> <a href="/user/sign_out" class="log-out">logout</a>
 			</h4>
 		</div>
+		<div>
+			<img src="" alt="" width="60" />
+		</div>
 	</c:if>
 			<%-- <c:if test="${ empty userId }">
 				<a href="/user/sign_in_view">로그인</a>
