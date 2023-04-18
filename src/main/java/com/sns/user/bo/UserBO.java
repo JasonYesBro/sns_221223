@@ -18,4 +18,9 @@ public class UserBO {
 	public int insertUser(String loginId, String password, String name, String email) {
 		return userMapper.insertUser(loginId, password, name, email);
 	}
+
+	public User getUserByLoginIdAndPassword(String loginId, String password) {
+		// TODO Auto-generated method stub
+		return userMapper.selectUserByLoginIdAndPassword(loginId, password);
+	}
 }

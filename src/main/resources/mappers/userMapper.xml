@@ -8,7 +8,6 @@
 	SELECT 
 		`id`
 		, `loginId`
-		, `password`
 		, `name`
 		, `email`
 		, `profileImagePath`
@@ -18,6 +17,23 @@
 		`user`
 	WHERE
 		`loginId` = #{loginId}
+
+</select>
+<select id="selectUserByLoginIdAndPassword" parameterType="map" resultType="com.sns.user.model.User">
+	SELECT 
+		`id`
+		, `loginId`
+		, `name`
+		, `email`
+		, `profileImagePath`
+		, `createdAt`
+		, `updatedAt`
+	FROM
+		`user`
+	WHERE
+		`loginId` = #{loginId}
+	AND
+		`password` = #{password}
 
 </select>
 <insert id="insertUser" parameterType="map">
