@@ -11,7 +11,7 @@
 				class="form-control form-control-lg" placeholder="비밀번호를 입력하세요.">
 		</div>
 		<button type="submit" class="btn btn-primary form-control mb-1">로그인</button>
-		<button type="button" class="btn btn-secondary form-control">회원가입</button>
+		<a href="/user/sign_up_view" class="btn btn-secondary form-control">회원가입</a>
 	</form>
 </div>
 
