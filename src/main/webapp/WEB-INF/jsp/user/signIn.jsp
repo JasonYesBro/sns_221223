@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div id="login-box" class="container mt-5">
+<div id="sign-in-box" class="container mt-5">
 	<form action="/user/sign_in" method="post" class="" id="loginForm">
 		<div class="form-group">
 			<input type="text" name="loginId" id="loginId"
