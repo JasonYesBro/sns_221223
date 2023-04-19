@@ -14,7 +14,7 @@
 		, `updatedAt`
 	FROM
 		`post`
-	ORDER BY `createdAt` ASC
+	ORDER BY `createdAt` DESC
 </select>
 
 <insert id="insertPost" parameterType="map">
