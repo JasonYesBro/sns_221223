@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sns.comment.bo.CommentBO;
+import com.sns.comment.model.Comment;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -53,6 +54,29 @@ public class CommentRestController {
 			result.put("code", 500);
 			result.put("errorMessage", "댓글 저장에 실패하였습니다.");
 		}		
+		
+		return result;
+	}
+	
+	@PostMapping("/delete")
+	public Map<String, Object> deleteComment(
+			@RequestParam("id") int id
+			,HttpSession session) {
+		
+		Map<String, Object> result = new HashMap<>(); 
+		
+		int userId = (int)session.getAttribute("userId");
+		
+		int rowCnt = 0;
+		rowCnt = commentBO.deleteCommentById(id);
+		
+		if (rowCnt > 0) {
+			result.put("code", 1);
+			result.put("result", "댓글이 삭제되었습니다.");
+		} else {
+			result.put("code", 500);
+			result.put("errorMessage", "댓글삭제에 실패하였습니다.");
+		}
 		
 		return result;
 	}
