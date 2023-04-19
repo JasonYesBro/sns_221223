@@ -1,9 +1,12 @@
 package com.sns.user.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sns.user.dao.UserMapper;
+import com.sns.user.model.ProfileView;
 import com.sns.user.model.User;
 
 @Service
@@ -22,5 +25,15 @@ public class UserBO {
 	public User getUserByLoginIdAndPassword(String loginId, String password) {
 		// TODO Auto-generated method stub
 		return userMapper.selectUserByLoginIdAndPassword(loginId, password);
+	}
+
+	public User getUserByUserId(int userId) {
+		return userMapper.selectUserByUserId(userId);
+	}
+	
+	// TODO profile 보여주는 서비스 단계
+	public List<ProfileView> generatedProfileViewList() {
+		
+		return null;
 	}
 }

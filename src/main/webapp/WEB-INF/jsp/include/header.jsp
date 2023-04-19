@@ -12,7 +12,7 @@
 	<c:if test="${ not empty userId }">
 		<div>
 			<h4 class="">
-				<span>userId</span> <a href="/user/sign_out" class="log-out">logout</a>
+				<a href="/user/profile/${userLoginId}"><span>"${userLoginId}"</span></a> <a href="/user/sign_out" class="log-out">logout</a>
 			</h4>
 		</div>
 		<div>

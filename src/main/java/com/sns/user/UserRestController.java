@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sns.common.EncryptUtils;
+import com.sns.post.bo.PostBO;
 import com.sns.user.bo.UserBO;
 import com.sns.user.model.User;
 
@@ -24,6 +26,9 @@ public class UserRestController {
 	@Autowired
 	UserBO userBO;
 
+	
+	@Autowired
+	
 	/**
 	 * 아이디 중복확인 API
 	 * @param loginId
@@ -124,6 +129,21 @@ public class UserRestController {
 			result.put("code", 500);
 			result.put("errorMessage", "로그인에 실패하였습니다.");
 		}
+		
+		return result;
+	}
+	
+	// TODO
+	@GetMapping("/profile")
+	public Map<String, Object> getUserProfile(int userId) {
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		User user = userBO.getUserByUserId(userId);
+		
+		//PostBO.
+		// 프로필화면에 들어갈 것은 내가 올린 게시물들이 보여진다.
+		// 
 		
 		return result;
 	}
