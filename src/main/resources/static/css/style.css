@@ -2,6 +2,55 @@
 
 header {
 	height: 100px;
+	min-width : 770px;
+}
+
+/* top 버튼 */
+
+#top-star{
+	object-fit:cover;
+	width:45px;
+}
+
+#top-btn{
+	
+	font-size: 1em;  
+	color:#fff;
+	/* 가운데정렬을위한 lineheight */
+	line-height: 50px;
+	text-align: center;
+	width:50px;
+	height:50px;
+	/* 원만들기 */
+	border-radius: 40px;
+	position: fixed;
+	bottom: 60px;
+	right:60px;
+	transition-property: background-color, opacity, visibility;
+	transition-duration: 0.3s, 0.5s, 0.5s;
+	opacity: 0;
+	visibility: hidden;
+	z-index: 999;
+}
+
+#top-btn:after{
+   line-height: 40px;
+   }
+ 
+ #top-btn.show{
+   opacity:1;
+   visibility:visible;
+ }
+ 
+ #top-btn.show:hover{
+   cursor:pointer;	
+   background-color: #FDF5DC;
+ }
+ 
+/* top버튼 */
+
+#sign-in-box {
+	max-width: 450px;	
 }
 
 #sign-up-box {
@@ -106,8 +155,12 @@ header {
 	
 }
 
+.comment-content-wrapper {
+	width : 100%;
+}
+
 .comment-content-box {
-	width: 300px;
+	width: 100%;
 	height: 20px;
 	overflow: hidden;
 }
