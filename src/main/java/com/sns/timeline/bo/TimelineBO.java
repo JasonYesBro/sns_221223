@@ -38,13 +38,13 @@ public class TimelineBO {
 			cardView.setPost(post);
 			
 			// user정보 담기
-			// TODO 유저정보를 가져오기 위해서는 post의 userId 와 user의 id가 같은 것을 가져와야 함 
+			// 유저정보를 가져오기 위해서는 post의 userId 와 user의 id가 같은 것을 가져와야 함 
 			User user = new User(); 
 			user = userBO.getUserByUserId(post.getUserId());
 			cardView.setUser(user);
 			
 			// commentList 담기
-			// TODO 댓글을 단 사람의 loginId를 가져오기
+			// 댓글을 단 사람의 loginId를 가져오기
 			List<CommentView> commentList = commentBO.generatedCommentViewList(post.getId());
 			
 			cardView.setCommentList(commentList);
