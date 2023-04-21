@@ -34,4 +34,9 @@ public class PostBO {
 		
 		return postMapper.selectPostList();
 	}
+
+	public List<Post> getPostListByLoginId(int userId) {
+
+		return postMapper.selectPostListByLoginId(userId);
+	}
 }
