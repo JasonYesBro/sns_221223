@@ -17,6 +17,22 @@
 	ORDER BY `createdAt` DESC
 </select>
 
+<select id="selectPostListByLoginId" parameterType="int" resultType="com.sns.post.model.Post">
+	SELECT
+		`id`
+		, `userId`
+		, `content`
+		, `imagePath`
+		, `createdAt`
+		, `updatedAt`
+	FROM
+		`post`
+	WHERE
+		`userId` = #{loginId}
+	ORDER BY `createdAt` DESC
+</select>
+
+
 <insert id="insertPost" parameterType="map">
 INSERT INTO `post`
 (
