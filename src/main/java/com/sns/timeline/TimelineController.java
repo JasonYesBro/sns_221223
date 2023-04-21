@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sns.comment.bo.CommentBO;
-import com.sns.comment.model.Comment;
 import com.sns.comment.model.PostCommentList;
 import com.sns.post.bo.PostBO;
 import com.sns.post.model.Post;
@@ -24,13 +23,10 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/timeline")
 @Controller
 public class TimelineController {
-	private static final Logger logger = LoggerFactory.getLogger(TimelineController.class);
+	//private static final Logger logger = LoggerFactory.getLogger(TimelineController.class);
 	
 	@Autowired
 	private PostBO postBO;
-	
-	@Autowired
-	private CommentBO commentBO;
 	
 	@Autowired
 	private TimelineBO timelineBO;
@@ -48,8 +44,8 @@ public class TimelineController {
 		}
 		
 		// 내가 한 방식 -> 시간과 자원을 소비함
-		List<Post> postList = postBO.getPostList();
-		List<PostCommentList> result = new ArrayList<>();
+//		List<Post> postList = postBO.getPostList();
+//		List<PostCommentList> result = new ArrayList<>();
 
 		
 		// 한번에 가져오는 방식
