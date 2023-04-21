@@ -9,15 +9,17 @@ import com.sns.user.model.User;
 // View용 객체
 // 게시글 1개와 매핑
 public class CardView {
-	
+
 	// 글 정보
 	private Post post;
 
-	//유저 정보
+	// 유저 정보
 	private User user;
-	
+
 	// 댓글 정보
 	private List<CommentView> commentList;
+
+	private boolean filledLike;
 
 	public Post getPost() {
 		return post;
@@ -42,12 +44,18 @@ public class CardView {
 	public void setCommentList(List<CommentView> commentList) {
 		this.commentList = commentList;
 	}
-	
+
+	public boolean isFilledLike() {
+		return filledLike;
+	}
+
+	public void setFilledLike(boolean filledLike) {
+		this.filledLike = filledLike;
+	}
+
 	// 좋아요 정보
-	//	private Like like;
-	
+	// private Like like;
+
 	// 로그인한 사람의 좋아요 유무 체크(boolean)
 
-
-	
 }
