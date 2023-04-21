@@ -20,5 +20,4 @@ public interface CommentMapper {
 
 	public int deleteCommentById(@Param("id") int id);
 
-	public User selectLoginIdById(int userId);
 }

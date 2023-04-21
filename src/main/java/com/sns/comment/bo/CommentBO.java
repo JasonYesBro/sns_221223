@@ -9,12 +9,16 @@ import org.springframework.stereotype.Service;
 import com.sns.comment.mapper.CommentMapper;
 import com.sns.comment.model.Comment;
 import com.sns.comment.model.CommentView;
+import com.sns.user.bo.UserBO;
 import com.sns.user.model.User;
 
 @Service
 public class CommentBO {
 	@Autowired
 	private CommentMapper commentMapper;
+	
+	@Autowired
+	private UserBO userBO;
 	
 	public int addComment(String content, int postId, int userId) {
 		
@@ -45,7 +49,10 @@ public class CommentBO {
 			commentView.setComment(comment);
 			
 			// 댓글쓴 유저의 아이디
-			User user = commentMapper.selectLoginIdById(comment.getUserId());
+			// UserBO를 활용하여 user 가져오기
+			User user = userBO.getUserByUserId(comment.getUserId());
+			//User user = commentMapper.selectLoginIdById(comment.getUserId());
+			
 			commentView.setCommentUserId(user.getLoginId());
 			
 			// list에 담기
