@@ -44,13 +44,13 @@
 				</div>
 				<div class="ml-2">
 					<div class="d-flex align-items-center mb-2">
-						<img
-							src="https://www.iconninja.com/files/214/518/441/heart-icon.png"
-							alt="빈하트이미지" width="20px" class="un-like-img mr-2 d-none">
-						<img
-							src="https://www.iconninja.com/files/527/809/128/heart-icon.png"
-							alt="좋아요하트이미지" width="20px" class="like-img mr-2"> <span>좋아요
-							00개</span>
+							<c:if test="${ card.filledLike eq false }">
+								<img src="https://www.iconninja.com/files/214/518/441/heart-icon.png" alt="빈하트이미지" width="20px" class="un-like-img mr-2" data-post-id="${card.post.id}">
+							</c:if>
+							<c:if test="${ card.filledLike eq true }">
+								<img src="https://www.iconninja.com/files/527/809/128/heart-icon.png" alt="좋아요하트이미지" width="20px" class="like-img mr-2" data-post-id="${card.post.id}">
+							</c:if>
+						 <span>좋아요00개</span>
 					</div>
 					<div class="post-content-box mb-2">
 						<div class="mb-2">
@@ -238,6 +238,56 @@
 						if (data.code == 1) {
 							alert("댓글이 삭제되었습니다.");
 							location.href="/timeline/timeline_view";
+							
+						} else {
+							alert(data.errorMessage);
+						}
+					}
+					, error : function(status, error, request) {
+						alert("관리자에게 문의바랍니다.");
+					}
+				});
+			});
+			
+			// 좋아요 부분
+			// 비워진 하트를 눌렀을 때
+			$('.un-like-img').click(function(e) {
+				
+				let postId = $(this).data('post-id');
+				$.ajax({
+					// request
+					url : "/like/"+ postId
+					
+					// response
+					, success : function(data) {
+						if(data.code == 1) {
+
+							alert("좋아요 되었습니다.");
+							location.reload("/timeline/timeline_view");
+						} else {
+							alert(data.errorMessage);
+						}
+					}
+					, error : function(status, error, request) {
+						alert("관리자에게 문의바랍니다.");
+					}
+				});
+			});
+			
+			// 채워진 하트를 눌렀을 때
+			$('.like-img').click(function(e) {
+				let postId = $(this).data('post-id');
+				
+				$.ajax({
+					// request
+					url : "/like/"+ postId
+					
+					// response
+					, success : function(data) {
+						if(data.code == 2) {
+
+							alert('좋아요 취소되었습니다.');
+							location.reload("/timeline/timeline_view");
 						} else {
 							alert(data.errorMessage);
 						}
