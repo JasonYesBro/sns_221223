@@ -2,9 +2,17 @@
 
 header {
 	height: 100px;
-	min-width : 770px;
+	min-width : 900px;
+	
 }
 
+#header-title-box {
+	min-width: 420px;	
+}
+
+#header-user-box {
+	min-width: 130px;
+}
 /* top 버튼 */
 
 #top-star{
@@ -25,7 +33,7 @@ header {
 	border-radius: 40px;
 	position: fixed;
 	bottom: 60px;
-	right:60px;
+	right:50px;
 	transition-property: background-color, opacity, visibility;
 	transition-duration: 0.3s, 0.5s, 0.5s;
 	opacity: 0;
