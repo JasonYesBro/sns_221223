@@ -41,4 +41,8 @@ INSERT INTO `like`
 	AND
 		`userId` = #{userId}
 </delete>
+
+<select id="getLikeCnt" parameterType="integer" resultType="int">
+SELECT COUNT(`postId`) AS likeCnt FROM `like` WHERE `postId` = #{postId};
+</select>
 </mapper>

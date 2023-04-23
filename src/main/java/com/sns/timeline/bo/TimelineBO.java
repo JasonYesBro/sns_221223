@@ -69,8 +69,9 @@ public class TimelineBO {
 			} else {
 				cardView.setFilledLike(false);
 			}
-			// 좋아요 유무 체크 담기
 			
+			// 좋아요 갯수 담기
+			cardView.setLikeCnt(likeMapper.getLikeCnt(post.getId()));
 			
 			cardViewList.add(cardView);
 		}

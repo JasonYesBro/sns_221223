@@ -20,6 +20,16 @@ public class CardView {
 	private List<CommentView> commentList;
 
 	private boolean filledLike;
+	
+	private Integer likeCnt;
+
+	public Integer getLikeCnt() {
+		return likeCnt;
+	}
+
+	public void setLikeCnt(Integer likeCnt) {
+		this.likeCnt = likeCnt;
+	}
 
 	public Post getPost() {
 		return post;
