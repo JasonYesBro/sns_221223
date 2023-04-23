@@ -159,6 +159,11 @@ header {
 	cursor: pointer;
 }
 
+.post-like {
+	font-weight: bold;
+	color: #ffc922;
+}
+
 .comment-box {
 	
 }

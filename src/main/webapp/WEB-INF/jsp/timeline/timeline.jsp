@@ -50,7 +50,7 @@
 							<c:if test="${ card.filledLike eq true }">
 								<img src="https://www.iconninja.com/files/527/809/128/heart-icon.png" alt="좋아요하트이미지" width="20px" class="like-img mr-2" data-post-id="${card.post.id}">
 							</c:if>
-						 <span>좋아요00개</span>
+						 <span>좋아요 </span><span class="post-like mr-1 ml-1">${card.likeCnt}</span><span>개</span>
 					</div>
 					<div class="post-content-box mb-2">
 						<div class="mb-2">
