@@ -18,7 +18,8 @@ public class CardView {
 
 	// 댓글 정보
 	private List<CommentView> commentList;
-
+	
+	// 좋아요 여부
 	private boolean filledLike;
 	
 	private Integer likeCnt;
