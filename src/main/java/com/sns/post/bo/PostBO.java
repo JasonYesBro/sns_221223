@@ -39,4 +39,9 @@ public class PostBO {
 
 		return postMapper.selectPostListByLoginId(userId);
 	}
+
+	public Post getPostByPostId(int postId) {
+
+		return postMapper.selectPostByPostId(postId);
+	}
 }
