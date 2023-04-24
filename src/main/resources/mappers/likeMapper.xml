@@ -32,6 +32,16 @@ INSERT INTO `like`
 		`userId` = #{userId}
 </select>
 
+<select id="selectLikeCntByPostId" parameterType="integer" resultType="int">
+SELECT COUNT(`postId`) AS likeCnt FROM `like` WHERE `postId` = #{postId};
+</select>
+
+<!-- likeCount쿼리 하나로 합치기 -->
+<!-- 조건문 또는 반복문 모두 사용가능 mybatis문법 -->
+<select id="selectLikeCountByPostIdOrUserId" parameterType="map" resultType="int">
+SELECT COUNT(*) FROM `like` WHERE `postId` = #{postId} <if test="userId != null"> AND `userId` = #{userId}</if>;
+</select>
+
 <delete id="deleteLikeByPostIdAndUserId" parameterType="map">
 	DELETE
 	FROM
@@ -42,7 +52,4 @@ INSERT INTO `like`
 		`userId` = #{userId}
 </delete>
 
-<select id="getLikeCnt" parameterType="integer" resultType="int">
-SELECT COUNT(`postId`) AS likeCnt FROM `like` WHERE `postId` = #{postId};
-</select>
 </mapper>
