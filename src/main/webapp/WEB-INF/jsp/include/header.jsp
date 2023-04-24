@@ -13,7 +13,7 @@
 	<c:if test="${ not empty userId }">
 		<div id="header-user-box">
 			<h4 class="">
-				<a href="/profile/${userLoginId}"><span>"${userLoginId}"</span></a>
+				<a href="/profile/${userLoginId}" id="header-login-id"><span>"${userLoginId}"</span></a>
 				<a href="/user/sign_out" class="log-out">logout</a>
 			</h4>
 

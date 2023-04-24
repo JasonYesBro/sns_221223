@@ -13,6 +13,16 @@ header {
 #header-user-box {
 	min-width: 130px;
 }
+
+#header-login-id {
+	color: black;
+	
+}
+
+#header-login-id:hover {
+	text-decoration-line: none !important;
+	color: black;
+}
 /* top 버튼 */
 
 #top-star{
