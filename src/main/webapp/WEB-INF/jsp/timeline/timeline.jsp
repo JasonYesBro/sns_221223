@@ -214,7 +214,7 @@
 							data) {
 						if (data.code == 1) {
 							alert("댓글 작성 완료");
-							location.href = "/timeline/timeline_view";
+							location.reload();
 						} else {
 							alert(data.errorMessage);
 						}
@@ -237,7 +237,7 @@
 					, success : function(data) {
 						if (data.code == 1) {
 							alert("댓글이 삭제되었습니다.");
-							location.href="/timeline/timeline_view";
+							location.reload();
 							
 						} else {
 							alert(data.errorMessage);
@@ -263,7 +263,7 @@
 						if(data.code == 1) {
 
 							alert("좋아요 되었습니다.");
-							location.reload("/timeline/timeline_view");
+							location.reload();
 						} else {
 							alert(data.errorMessage);
 						}
@@ -287,7 +287,7 @@
 						if(data.code == 2) {
 
 							alert('좋아요 취소되었습니다.');
-							location.reload("/timeline/timeline_view");
+							location.reload();
 						} else {
 							alert(data.errorMessage);
 						}
