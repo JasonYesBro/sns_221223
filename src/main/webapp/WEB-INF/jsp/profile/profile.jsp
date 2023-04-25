@@ -86,18 +86,14 @@
     			// console.log($(this).data('post-id'));
     			let postId = $(this).data('post-id');
     			// AJAX 통신
-    			$.ajax({
-    				url : "/post/"
-    				, data : {"postId" : postId}
-    				, success : function(data) {
-    					if(data.code == 1) {
-    						alert("ds");
-    					} else {
-    						alert(data.errorMessage);
-    					}
+    			location.href="/detail/"+postId;
+    			
+    			/* $.ajax({
+    				url : "/detail/" + postId
+    				, success : function () {
+    					
     				}
-    				
-    			});
+    			}); */
     		});
     		
     		
