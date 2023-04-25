@@ -50,4 +50,33 @@ public class FileManagerService {
 		}
 		return "/images/" + dirName + fileName;
 	}
+	
+	public void deleteFile(String imagePath) {
+		// 겹치는 Images경로를 제거
+		// imagePath 안에있는 /images/ 제거
+		Path path = Paths.get(FILE_UPLOAD_PATH + imagePath.replace("/images/", ""));
+		
+		// 이미지를 제거하고 폴더를 제거해줘야함
+		if (Files.exists(path)) {
+			// 부른쪽에서 해결하지 않고 여기서 해결함
+			try {
+				Files.delete(path);
+			} catch (IOException e) {
+				logger.error("[delete file] 이미지 삭제 실패. imagePath : {}", imagePath);
+				return; // 수행안한다.
+			}
+			
+		} 
+		
+		// 디렉토리 삭제
+		path = path.getParent(); // 이미지가 있는 상위폴더
+		if (Files.exists(path)) {
+			try {
+				Files.delete(path); // 폴더 삭제
+			} catch (IOException e) {
+				logger.error("[delete dir] 폴더 삭제 실패. path : {}", path);
+				return;
+			}
+		}
+	}
 }
