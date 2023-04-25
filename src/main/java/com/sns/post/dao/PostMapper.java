@@ -19,4 +19,10 @@ public interface PostMapper {
 	public List<Post> selectPostListByLoginId(int userId);
 
 	public Post selectPostByPostId(int postId);
+
+	public int deleteCommentsByPostId(int postId);
+	
+	public int deleteLikesByPostId(int postId);
+
+	public int deletePostByPostId(@Param("postId") int postId, @Param("userId") int userId);
 }

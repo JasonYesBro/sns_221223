@@ -33,9 +33,11 @@
 		<c:forEach items="${cardList}" var="card">
 			<div class="container post-box pt-1 pb-3">
 				<div class="d-flex justify-content-between align-items-center mb-1">
-					<span class="post-id-box font-weight-bold">${card.user.loginId}</span> <img
-						src="https://www.iconninja.com/files/860/824/939/more-icon.png"
-						alt="더보기 이미지" class="see-more-icon" width="30">
+					<span class="post-id-box font-weight-bold">${card.user.loginId}</span>
+					<!-- 글쓴이와 로그인유저와 같을때만 표시 -->
+					<c:if test="${card.user.id eq userId}">
+					 	<img src="https://www.iconninja.com/files/860/824/939/more-icon.png" alt="더보기 이미지" class="see-more-icon" width="30" data-toggle="modal" data-target="#modal" data-post-id="${card.post.id}">
+					</c:if>
 				</div>
 				<div>
 					<div class="mb-2">
@@ -72,6 +74,7 @@
 											</div>
 											<div class="d-flex align-items-center">
 												<c:if test="${ userId eq commentList.comment.userId }">
+												<!-- a 태그로 감싸기? -->
 													<img src="../static/img/deleteImg.png" class="delete-img"
 														alt="삭제버튼" data-delete-id="${commentList.comment.id}" width="13">
 												</c:if>
@@ -99,6 +102,22 @@
 				</div>
 			</div>
 		</c:forEach>
+	</div>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="modal">
+	<%-- modal-dialog-centered 수직가운데 정렬 --%>
+	  <div class="modal-dialog modal-dialog-centered modal-sm">
+	    <div class="modal-content text-center">
+		    <div class="py-2 btn border-bottom">
+	    	    <a href="#" id="deletePostBtn">삭제하기</a>
+		    </div>
+		    <%-- data-dismiss="modal" 모달닫기 --%>
+		    <div class="py-2 btn" data-dismiss="modal">
+	          <a href="#">취소하기</a>
+		    </div>
+	    </div>
+	  </div>
 	</div>
 
 	<script>
@@ -297,6 +316,40 @@
 					}
 				});
 			});
+			
+			// 더보기 이미지 클릭
+			$(".see-more-icon").click(function(e) {
+				let postId = $(this).data('post-id'); // getting
+				
+				// 클릭한 postId를 하나의 모달태그에 심어줘야 함 
+				$('#modal').data('post-id', postId); // setting
+				
+				// 모달의 삭제버튼 클릭 시
+				// 모달안에 있는 del버튼 이라고 명시
+				$('#modal #deletePostBtn').on('click', function(e) {
+					e.preventDefault();
+					
+					let postId = $('#modal').data('post-id');
+					
+					// AJAX
+					$.ajax({
+						type: "DELETE"
+						, url: "/post/delete"
+						, data: {"postId" : postId}
+						
+						// response
+						, success: function(data){
+							if(data.code == 1) {
+								alert("게시글 삭제가 되었습니다.");
+								location.reload(true);
+							} else {
+								alert(data.errorMessage);
+							}
+						}
+					});
+				});
+			});
+			
 		});
 	</script>
 </body>

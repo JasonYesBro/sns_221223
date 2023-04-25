@@ -63,6 +63,28 @@ VALUES
 	, NOW()
 	, NOW()
 )
-
 </insert>
+
+<delete id="deleteCommentsByPostId" parameterType="int">
+	DELETE FROM
+		`comment`
+	WHERE
+		`postId` = #{postId}
+</delete>
+
+<delete id="deleteLikesByPostId" parameterType="int">
+	DELETE FROM
+		`like`
+	WHERE
+		`postId` = #{postId}
+</delete>
+
+<delete id="deletePostByPostId" parameterType="map">
+	DELETE FROM
+		`post`
+	WHERE
+		`id` = #{postId}
+		AND
+		`userId` = #{userId}
+</delete>
 </mapper>
