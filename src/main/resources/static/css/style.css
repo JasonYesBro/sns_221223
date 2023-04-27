@@ -2,12 +2,16 @@
 
 header {
 	height: 100px;
-	min-width : 900px;
-	
+	min-width: 900px;
+	position: fixed;
+	top: 0;
+	/* width: 100% */
+	left: 0;
+	right: 0;
 }
 
 #header-title-box {
-	min-width: 420px;	
+	min-width: 420px;
 }
 
 #header-user-box {
@@ -16,7 +20,6 @@ header {
 
 #header-login-id {
 	color: black;
-	
 }
 
 #header-login-id:hover {
@@ -24,26 +27,24 @@ header {
 	color: black;
 }
 /* top 버튼 */
-
-#top-star{
-	object-fit:cover;
-	width:45px;
+#top-star {
+	object-fit: cover;
+	width: 45px;
 }
 
-#top-btn{
-	
-	font-size: 1em;  
-	color:#fff;
+#top-btn {
+	font-size: 1em;
+	color: #fff;
 	/* 가운데정렬을위한 lineheight */
 	line-height: 50px;
 	text-align: center;
-	width:50px;
-	height:50px;
+	width: 50px;
+	height: 50px;
 	/* 원만들기 */
 	border-radius: 40px;
 	position: fixed;
 	bottom: 60px;
-	right:50px;
+	right: 50px;
 	transition-property: background-color, opacity, visibility;
 	transition-duration: 0.3s, 0.5s, 0.5s;
 	opacity: 0;
@@ -51,24 +52,23 @@ header {
 	z-index: 999;
 }
 
-#top-btn:after{
-   line-height: 40px;
-   }
- 
- #top-btn.show{
-   opacity:1;
-   visibility:visible;
- }
- 
- #top-btn.show:hover{
-   cursor:pointer;	
-   background-color: #FDF5DC;
- }
- 
-/* top버튼 */
+#top-btn:after {
+	line-height: 40px;
+}
 
+#top-btn.show {
+	opacity: 1;
+	visibility: visible;
+}
+
+#top-btn.show:hover {
+	cursor: pointer;
+	background-color: #FDF5DC;
+}
+
+/* top버튼 */
 #sign-in-box {
-	max-width: 450px;	
+	max-width: 450px;
 }
 
 #sign-up-box {
@@ -90,23 +90,24 @@ header {
 
 .log-out {
 	color: black;
-	background-color : lightgray;
-	border:1px solid lightgray;
+	background-color: lightgray;
+	border: 1px solid lightgray;
 	border-radius: 3px;
-	font-size:15px;
+	font-size: 15px;
 }
 
 .log-out:hover {
 	color: white;
-	border:1px solid lightgray;
+	border: 1px solid lightgray;
 	text-decoration: none;
+}
+section {
+	margin-top:100px;
 }
 
 #wrap {
 	height: 1000px;
 }
-
-
 
 .text-group-box {
 	width: 450px;
@@ -179,7 +180,7 @@ header {
 }
 
 .comment-content-wrapper {
-	width : 100%;
+	width: 100%;
 }
 
 .comment-content-box {

@@ -41,7 +41,7 @@
 				</div>
 				<div>
 					<div class="mb-2">
-						<img src="${card.post.imagePath}" alt="" class="post-img">
+						<img src="${card.post.imagePath}" alt="" class="post-img" data-post-id="${card.post.id}">
 					</div>
 				</div>
 				<div class="ml-2">
@@ -350,6 +350,22 @@
 				});
 			});
 			
+			// 게시물 상세보기
+			$('.post-img').click(function() {
+    			// post-id
+    			// console.log($(this).data('post-id'));
+    			let postId = $(this).data('post-id');
+    			console.log(postId);
+    			// AJAX 통신
+    			location.href="/detail/"+postId;
+    			
+    			/* $.ajax({
+    				url : "/detail/" + postId
+    				, success : function () {
+    					
+    				}
+    			}); */
+    		});
 		});
 	</script>
 </body>
