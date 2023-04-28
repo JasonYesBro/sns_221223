@@ -162,7 +162,6 @@
 		let comment = $(this).parent().siblings().children('.commentInputBox').val();
 		let postId = $(this).data('post-id');
 
-		console.log(comment);
 		if (comment == "") {
 			alert("댓글 내용을 작성해주세요.");
 		}

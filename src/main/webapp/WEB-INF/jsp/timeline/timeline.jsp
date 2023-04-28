@@ -154,9 +154,6 @@
 				let fileName = $('#fileName')
 						.html().trim();
 
-				console.log(content);
-				console.log(fileName);
-
 				// content는 null 허용임
 				if (fileName == "") {
 					alert("사진을 선택해주세요.");
@@ -328,7 +325,6 @@
 				// 모달안에 있는 del버튼 이라고 명시
 				$('#modal #deletePostBtn').on('click', function(e) {
 					e.preventDefault();
-					
 					let postId = $('#modal').data('post-id');
 					
 					// AJAX
@@ -355,16 +351,8 @@
     			// post-id
     			// console.log($(this).data('post-id'));
     			let postId = $(this).data('post-id');
-    			console.log(postId);
     			// AJAX 통신
     			location.href="/detail/"+postId;
-    			
-    			/* $.ajax({
-    				url : "/detail/" + postId
-    				, success : function () {
-    					
-    				}
-    			}); */
     		});
 		});
 	</script>
