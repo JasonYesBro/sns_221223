@@ -349,7 +349,6 @@
 			// 게시물 상세보기
 			$('.post-img').click(function() {
     			// post-id
-    			// console.log($(this).data('post-id'));
     			let postId = $(this).data('post-id');
     			// AJAX 통신
     			location.href="/detail/"+postId;
